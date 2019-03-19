@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Holicz\Exception;
+namespace holicz\SimpleException;
 
 class BaseException extends \Exception
 {

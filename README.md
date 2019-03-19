@@ -16,8 +16,10 @@ Your exception class:
 ```php
 <?php
 
-use Holicz\Exception\BaseException;
-use Holicz\Exception\ExceptionContext;
+namespace App\Exception;
+
+use holicz\SimpleException\BaseException;
+use holicz\SimpleException\ExceptionContext;
 
 class MyException extends BaseException
 {
