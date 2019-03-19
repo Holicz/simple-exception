@@ -1,6 +1,7 @@
 {
     "name": "holicz/simple-exception",
     "description": "Simple base exception class",
+    "homepage": "https://github.com/Holicz/simple-exception",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -11,11 +12,11 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.1.0"
+        "php": "^7.1"
     },
     "autoload": {
-        "psr-0": {
-            "HelloWorld": "src/"
+        "psr-4": {
+            "holicz\\SimpleException\\": "src/"
         }
     }
 }
