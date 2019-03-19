@@ -1,5 +1,5 @@
 {
-    "name": "holiz/simple-exception",
+    "name": "holicz/simple-exception",
     "description": "Simple base exception class",
     "type": "library",
     "license": "MIT",
