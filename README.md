@@ -8,7 +8,7 @@ Installation and usage
 Installation with composer
 -----
 ```bash
-composer require holiz/simple-exception
+composer require holicz/simple-exception
 ```
 
 Your exception class:
