@@ -4,15 +4,17 @@ declare(strict_types = 1);
 
 namespace holicz\SimpleException;
 
+use Throwable;
+
 class BaseException extends \Exception
 {
     private $context;
 
-    public function __construct(ExceptionContext $context)
+    public function __construct(ExceptionContext $context, ?Throwable $previous = null)
     {
         $this->context = $context;
 
-        parent::__construct($this->getPublicMessage(), $this->getStatusCode());
+        parent::__construct($this->getPublicMessage(), $this->getStatusCode(), $previous);
     }
 
     public function getContext(): ExceptionContext
