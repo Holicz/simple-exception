@@ -10,15 +10,13 @@ class ExceptionContext
     private $debugMessage;
     private $parameters;
     private $statusCode;
-    private $trace;
 
-    public function __construct(string $publicMessage, ?string $debugMessage = null, array $parameters = [], int $statusCode = 500, array $trace = [])
+    public function __construct(string $publicMessage, ?string $debugMessage = null, array $parameters = [], int $statusCode = 500)
     {
         $this->publicMessage = $publicMessage;
         $this->debugMessage = $debugMessage;
         $this->parameters = $parameters;
         $this->statusCode = $statusCode;
-        $this->trace = $trace;
     }
 
     public function getPublicMessage(): string
@@ -39,10 +37,5 @@ class ExceptionContext
     public function getStatusCode(): int
     {
         return $this->statusCode;
-    }
-
-    public function getTrace(): array
-    {
-        return $this->trace;
     }
 }

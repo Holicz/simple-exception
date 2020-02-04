@@ -45,9 +45,4 @@ class BaseException extends \Exception
     {
         return $this->context->getStatusCode();
     }
-
-    public function getTrace(): array
-    {
-        return $this->context->getTrace();
-    }
 }
