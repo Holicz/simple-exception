@@ -21,14 +21,13 @@ namespace App\Exception;
 use holicz\SimpleException\BaseException;
 use holicz\SimpleException\ExceptionContext;
 
-class MyException extends BaseException
+class CouldNotRemoveArticleException extends BaseException
 {
-    public function __construct(array $parameters = [])
+    public function __construct(int $id)
     {
         $exceptionContext = new ExceptionContext(
-            'My public message',
-            sprintf('My private message with params: %s', $parameters['key']),
-            $parameters,
+            'There was an error during article removal. Please try again later.',
+            sprintf('Could not delete article with id %d', $id),
             500 // HTTP status code
         );
     
@@ -44,9 +43,8 @@ try {
     ...
 } catch (MyException $e) {
     // Available methods
-    $e->getPublicMessage();
-    $e->getDebugMessage();
-    $e->getParameters();
+    $e->getPublicMessage(); // Show to user
+    $e->getDebugMessage(); // Log
     $e->getStatusCode();
 }
 ```

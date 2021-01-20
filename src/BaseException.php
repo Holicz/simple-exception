@@ -4,26 +4,22 @@ declare(strict_types = 1);
 
 namespace holicz\SimpleException;
 
+use Exception;
 use Throwable;
 
-class BaseException extends \Exception
+class BaseException extends Exception
 {
-    private $context;
+    private ExceptionContext $context;
 
     public function __construct(ExceptionContext $context, ?Throwable $previous = null)
     {
         $this->context = $context;
 
-        parent::__construct($this->getPublicMessage(), $this->getStatusCode(), $previous);
-    }
-
-    public function getContext(): ExceptionContext
-    {
-        return $this->context;
+        parent::__construct($this->getDebugMessage(), $this->getStatusCode(), $previous);
     }
 
     /**
-     * @return string The message that can safely be displayed to end-users because it doesn't contain sensitive data
+     * @return string The message that should be displayed to users because it shouldn't contain sensitive debug data
      */
     public function getPublicMessage(): string
     {
@@ -31,16 +27,11 @@ class BaseException extends \Exception
     }
 
     /**
-     * @return string The full exception message that is logged and it can contain sensitive data
+     * @return string The full exception message that should be logged and can contain sensitive data
      */
-    public function getDebugMessage(): ?String
+    public function getDebugMessage(): string
     {
         return $this->context->getDebugMessage();
-    }
-
-    public function getParameters(): array
-    {
-        return $this->context->getParameters();
     }
 
     public function getStatusCode(): int

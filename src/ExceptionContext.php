@@ -4,18 +4,19 @@ declare(strict_types = 1);
 
 namespace holicz\SimpleException;
 
-class ExceptionContext
+final class ExceptionContext
 {
-    private $publicMessage;
-    private $debugMessage;
-    private $parameters;
-    private $statusCode;
+    private string $publicMessage;
+    private string $debugMessage;
+    private int $statusCode;
 
-    public function __construct(string $publicMessage, ?string $debugMessage = null, array $parameters = [], int $statusCode = 500)
-    {
+    public function __construct(
+        string $publicMessage,
+        string $debugMessage,
+        int $statusCode = 500
+    ) {
         $this->publicMessage = $publicMessage;
         $this->debugMessage = $debugMessage;
-        $this->parameters = $parameters;
         $this->statusCode = $statusCode;
     }
 
@@ -24,14 +25,9 @@ class ExceptionContext
         return $this->publicMessage;
     }
 
-    public function getDebugMessage(): ?string
+    public function getDebugMessage(): string
     {
         return $this->debugMessage;
-    }
-
-    public function getParameters(): array
-    {
-        return $this->parameters;
     }
 
     public function getStatusCode(): int
